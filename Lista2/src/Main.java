@@ -73,7 +73,101 @@ public class Main {
         System.out.println("Refaz 2/2 :");
         editor.refazer();
         System.out.println("Texto Atual: " + editor.getTextoAtual());
+
+
+        System.out.println("//-----------------------------------------------------------------//");
+
+
+        ListaFila fila = new ListaFila();
+
+        System.out.println("1. Verificando se esta vazia (esperado: true): " + fila.estaVazia());
+
+        System.out.println("\n2. Inserindo elementos (Enfileirar):");
+        fila.inserirNoFinal("A");
+        fila.inserirNoFinal("B");
+        fila.inserirNoFinal("C");
+        fila.mostrarLista();
+
+        System.out.println("3. Verificando se esta vazia (esperado: false): " + fila.estaVazia());
+
+        System.out.println("\n4. Removendo do inicio (Desenfileirar):");
+        String removido1 = fila.removerDoInicio();
+        System.out.println("Elemento removido: " + removido1 + " (Esperado: A)");
+        fila.mostrarLista();
+
+        String removido2 = fila.removerDoInicio();
+        System.out.println("Elemento removido: " + removido2 + " (Esperado: B)");
+        fila.mostrarLista();
+
+        System.out.println("\n5. Inserindo mais um elemento:");
+        fila.inserirNoFinal("D");
+        fila.mostrarLista();
+
+        System.out.println("\n6. Removendo restantes:");
+        String removido3 = fila.removerDoInicio();
+        System.out.println("Elemento removido: " + removido3 + " (Esperado: C)");
+        String removido4 = fila.removerDoInicio();
+        System.out.println("Elemento removido: " + removido4 + " (Esperado: D)");
+
+        System.out.println("\n7. Estado final da lista:");
+        fila.mostrarLista();
+
+        System.out.println("8. Tentativa de remover de lista vazia (esperado: null): " + fila.removerDoInicio());
+
+
+        System.out.println("//-----------------------------------------------------------------//");
+
+
+        FilaImpressao impressora = new FilaImpressao();
+
+
+        System.out.println("\n1. Adiciona documentos na fila:");
+        impressora.adicionarDocumento("Relatorio_A.pdf", 512);
+        System.out.println("Adicionado: Relatorio_A.pdf");
+        impressora.adicionarDocumento("Foto_Familia.jpg", 1024);
+        System.out.println("Adicionado: Foto_Familia.jpg");
+        impressora.adicionarDocumento("Email_Importante.txt", 40);
+        System.out.println("Adicionado: Email_Importante.txt");
+
+        System.out.println("\n2. Estado atual da fila:");
+        impressora.mostrarFila();
+
+        System.out.println("\n3. Imprime o proximo documento:");
+        Documento docImpresso1 = impressora.imprimirProximo();
+        if (docImpresso1 != null) {
+            System.out.println("Imprimindo: " + docImpresso1.nome + " (" + docImpresso1.tamanho + "KB)");
+        }
+
+        System.out.println("\n4. Adiciona um novo documento enquanto imprime:");
+        impressora.adicionarDocumento("Tabela_Dados.xlsx", 700);
+        System.out.println("Adicionado: Tabela_Dados.xlsx");
+
+        System.out.println("\n5. Imprime os documentos restantes:");
+        Documento docImpresso2 = impressora.imprimirProximo();
+        if (docImpresso2 != null) {
+            System.out.println("Imprimindo: " + docImpresso2.nome + " (" + docImpresso2.tamanho + "KB)");
+        }
+
+        Documento docImpresso3 = impressora.imprimirProximo();
+        if (docImpresso3 != null) {
+            System.out.println("Imprimindo: " + docImpresso3.nome + " (" + docImpresso3.tamanho + "KB)");
+        }
+
+        System.out.println("\n6. Estado final da fila:");
+        impressora.mostrarFila();
+
+        System.out.println("\n7. Imprime o ultimo documento:");
+        Documento docImpresso4 = impressora.imprimirProximo();
+        if (docImpresso4 != null) {
+            System.out.println("Imprimindo: " + docImpresso4.nome + " (" + docImpresso4.tamanho + "KB)");
+        }
+
+        System.out.println("\n8. Tentativa de imprimir com fila vazia:");
+        Documento docVazio = impressora.imprimirProximo();
+        if (docVazio == null) {
+            System.out.println("Nenhum documento para imprimir. Fila vazia.");
+        }
     }
-
-
 }
+
+
